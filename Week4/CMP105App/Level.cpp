@@ -12,6 +12,19 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	testSprite.setSize(sf::Vector2f(100, 100));
 	testSprite.setPosition(100, 100);
 
+	playerTex.loadFromFile("gfx/Mushroom.png");
+	player.setInput(input);
+	player.setTexture(&playerTex);
+	player.setSize(sf::Vector2f(100.0f, 100.0f));
+	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
+	player.setPosition(window->getSize().x / 2, window->getSize().y / 2);
+	player.setVelocity(sf::Vector2f(100.0f, 100.0f));
+
+	goombaTex.loadFromFile("gfx/Goomba.png");
+	goomba.setTexture(&goombaTex);
+	goomba.setSize(sf::Vector2f(100.0f, 100.0f));
+	goomba.setOrigin(goomba.getSize().x / 2, goomba.getSize().y / 2);
+	goomba.setPosition(1000, 200);
 }
 
 Level::~Level()
@@ -28,12 +41,13 @@ void Level::handleInput(float dt)
 		window->close();
 	}
 
+	player.handleInput(dt);
 }
 
 // Update game objects
 void Level::update(float dt)
 {
-	
+
 }
 
 // Render level
@@ -42,6 +56,8 @@ void Level::render()
 	beginDraw();
 
 	window->draw(testSprite);
+	window->draw(player);
+	window->draw(goomba);
 
 	endDraw();
 }

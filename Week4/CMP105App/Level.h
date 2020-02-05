@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "Framework/Input.h"
 #include "Framework/GameObject.h"
+#include "Player.h"
+#include "Ennemy.h"
 #include <string.h>
 #include <iostream>
 
@@ -28,5 +30,8 @@ private:
 	// Level objects
 	GameObject testSprite;
 	sf::Texture texture;
-
+	Player player;
+	sf::Texture playerTex;
+	Ennemy goomba;
+	sf::Texture goombaTex;
 };
