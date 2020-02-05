@@ -21,10 +21,19 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player.setVelocity(sf::Vector2f(100.0f, 100.0f));
 
 	goombaTex.loadFromFile("gfx/Goomba.png");
-	goomba.setTexture(&goombaTex);
-	goomba.setSize(sf::Vector2f(100.0f, 100.0f));
-	goomba.setOrigin(goomba.getSize().x / 2, goomba.getSize().y / 2);
-	goomba.setPosition(1000, 200);
+	goombas[0].sendWindowInfos(window);
+	goombas[0].setTexture(&goombaTex);
+	goombas[0].setSize(sf::Vector2f(100.0f, 100.0f));
+	goombas[0].setOrigin(goombas[0].getSize().x / 2, goombas[0].getSize().y / 2);
+	goombas[0].setPosition(1000, 200);
+	goombas[0].setVelocity(sf::Vector2f(200.0f, 100.0f));
+
+	goombas[1].sendWindowInfos(window);
+	goombas[1].setTexture(&goombaTex);
+	goombas[1].setSize(sf::Vector2f(100.0f, 100.0f));
+	goombas[1].setOrigin(goombas[1].getSize().x / 2, goombas[1].getSize().y / 2);
+	goombas[1].setPosition(100, 800);
+	goombas[1].setVelocity(sf::Vector2f(-200.0f, 400.0f));
 }
 
 Level::~Level()
@@ -47,7 +56,7 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-
+	for (unsigned i = 0; i < 2; i++) goombas[i].update(dt);
 }
 
 // Render level
@@ -57,7 +66,7 @@ void Level::render()
 
 	window->draw(testSprite);
 	window->draw(player);
-	window->draw(goomba);
+	for (unsigned i = 0; i < 2; i++) window->draw(goombas[i]);
 
 	endDraw();
 }

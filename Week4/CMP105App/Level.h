@@ -32,6 +32,6 @@ private:
 	sf::Texture texture;
 	Player player;
 	sf::Texture playerTex;
-	Ennemy goomba;
+	Ennemy goombas[2];
 	sf::Texture goombaTex;
 };
