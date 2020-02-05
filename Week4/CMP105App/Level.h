@@ -5,6 +5,7 @@
 #include "Framework/GameObject.h"
 #include "Player.h"
 #include "Ennemy.h"
+#include "Cursor.h"
 #include <string.h>
 #include <iostream>
 
@@ -34,4 +35,7 @@ private:
 	sf::Texture playerTex;
 	Ennemy goombas[2];
 	sf::Texture goombaTex;
+
+	Cursor mouse;
+	sf::Texture mouseTex;
 };

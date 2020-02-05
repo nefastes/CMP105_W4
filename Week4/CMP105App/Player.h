@@ -8,4 +8,3 @@ public:
 
 	void handleInput(float dt) override;
 };
-

@@ -34,6 +34,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	goombas[1].setOrigin(goombas[1].getSize().x / 2, goombas[1].getSize().y / 2);
 	goombas[1].setPosition(100, 800);
 	goombas[1].setVelocity(sf::Vector2f(-200.0f, 400.0f));
+
+	mouseTex.loadFromFile("gfx/icon.png");
+	mouse.setInput(input);
+	mouse.setTexture(&mouseTex);
+	mouse.setSize(sf::Vector2f(60.0f, 60.0f));
+	window->setMouseCursorVisible(false);
 }
 
 Level::~Level()
@@ -57,6 +63,7 @@ void Level::handleInput(float dt)
 void Level::update(float dt)
 {
 	for (unsigned i = 0; i < 2; i++) goombas[i].update(dt);
+	mouse.update(dt);
 }
 
 // Render level
@@ -67,6 +74,7 @@ void Level::render()
 	window->draw(testSprite);
 	window->draw(player);
 	for (unsigned i = 0; i < 2; i++) window->draw(goombas[i]);
+	window->draw(mouse);
 
 	endDraw();
 }
