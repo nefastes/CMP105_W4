@@ -7,4 +7,9 @@ public:
 	~Player();
 
 	void handleInput(float dt) override;
+	void update(float dt) override;
+
+private:
+	int counter;
+	bool isMoving;
 };

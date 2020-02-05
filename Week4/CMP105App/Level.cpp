@@ -12,7 +12,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	testSprite.setSize(sf::Vector2f(100, 100));
 	testSprite.setPosition(100, 100);
 
-	playerTex.loadFromFile("gfx/Mushroom.png");
+	playerTex.loadFromFile("gfx/MarioSheetT.png", sf::IntRect(0,0,15,21));
 	player.setInput(input);
 	player.setTexture(&playerTex);
 	player.setSize(sf::Vector2f(100.0f, 100.0f));
