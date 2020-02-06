@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Ennemy.h"
 #include "Cursor.h"
+#include "Background.h"
+#include "Camera.h"
 #include <string.h>
 #include <iostream>
 
@@ -38,4 +40,9 @@ private:
 
 	Cursor mouse;
 	sf::Texture mouseTex;
+
+	Background background;
+	sf::Texture backgroundTex;
+
+	Camera camera;
 };

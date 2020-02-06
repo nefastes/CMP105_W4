@@ -12,13 +12,14 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	testSprite.setSize(sf::Vector2f(100, 100));
 	testSprite.setPosition(100, 100);
 
-	playerTex.loadFromFile("gfx/MarioSheetT.png", sf::IntRect(0,0,15,21));
+	playerTex.loadFromFile("gfx/MarioSheetT.png");	//We need to load the entire texture first, and then focus our sprite view with setTextureRect
 	player.setInput(input);
 	player.setTexture(&playerTex);
+	player.setTextureRect(sf::IntRect(0, 0, 15, 21));	//First init of the sprite texture rect
 	player.setSize(sf::Vector2f(100.0f, 100.0f));
 	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
 	player.setPosition(window->getSize().x / 2, window->getSize().y / 2);
-	player.setVelocity(sf::Vector2f(100.0f, 100.0f));
+	player.setVelocity(sf::Vector2f(400.0f, 100.0f));
 
 	goombaTex.loadFromFile("gfx/Goomba.png");
 	goombas[0].sendWindowInfos(window);
@@ -40,6 +41,14 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	mouse.setTexture(&mouseTex);
 	mouse.setSize(sf::Vector2f(60.0f, 60.0f));
 	window->setMouseCursorVisible(false);
+
+	backgroundTex.loadFromFile("gfx/Level1_1.png");
+	background.setTexture(&backgroundTex);
+	background.setSize(sf::Vector2f(11038, window->getSize().y));
+	background.setPosition(0, 0);
+
+	camera.setView(window->getView());
+	camera.sendWindowInfos(window);
 }
 
 Level::~Level()
@@ -64,6 +73,7 @@ void Level::update(float dt)
 {
 	for (unsigned i = 0; i < 2; i++) goombas[i].update(dt);
 	mouse.update(dt);
+	camera.moveViewPos(sf::Vector2f(player.getPosition().x, window->getSize().y/2));
 }
 
 // Render level
@@ -71,6 +81,7 @@ void Level::render()
 {
 	beginDraw();
 
+	window->draw(background);
 	window->draw(testSprite);
 	window->draw(player);
 	for (unsigned i = 0; i < 2; i++) window->draw(goombas[i]);

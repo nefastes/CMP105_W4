@@ -35,17 +35,18 @@ void Player::handleInput(float dt)
 	}
 	else isMoving = false;
 
-	if (isMoving) update(dt);
+	update(dt);
 }
 
 void Player::update(float dt)
 {
-	if (counter == 10)
+	//Update the player sprite when in movement by changing the rectangle it displays every few frames
+	if (counter == 20 && isMoving)
 	{
 		setTextureRect(sf::IntRect(15,0,15,21));
 		++counter;
 	}
-	else if (counter == 20)
+	else if (counter == 40)
 	{
 		setTextureRect(sf::IntRect(0,0,15,21));
 		counter = 0;
