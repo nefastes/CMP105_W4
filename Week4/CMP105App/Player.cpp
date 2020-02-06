@@ -13,12 +13,12 @@ Player::~Player()
 void Player::handleInput(float dt)
 {
 	//Note to self: put 0 on the axis you dont want your key press to have an effect on !
-	/*if (input->isKeyDown(sf::Keyboard::Up) || input->isKeyDown(sf::Keyboard::W))
+	if (input->isKeyDown(sf::Keyboard::Up) || input->isKeyDown(sf::Keyboard::W))
 	{
-		move(0, -getVelocity().y * dt);
+		move(0, -2.0f * getVelocity().y * dt);
 		isMoving = true;
 	}
-	if (input->isKeyDown(sf::Keyboard::Down) || input->isKeyDown(sf::Keyboard::S))
+	/*if (input->isKeyDown(sf::Keyboard::Down) || input->isKeyDown(sf::Keyboard::S))
 	{
 		move(0, getVelocity().y * dt);
 		isMoving = true;
@@ -52,4 +52,7 @@ void Player::update(float dt)
 		counter = 0;
 	}
 	else ++counter;
+
+	if (getPosition().y < 533 && !input->isKeyDown(sf::Keyboard::Up)) move(0, getVelocity().y*dt);
+	else if (getPosition().y > 533) setPosition(getPosition().x, 533);
 }

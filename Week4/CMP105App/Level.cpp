@@ -18,8 +18,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	player.setTextureRect(sf::IntRect(0, 0, 15, 21));	//First init of the sprite texture rect
 	player.setSize(sf::Vector2f(100.0f, 100.0f));
 	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
-	player.setPosition(window->getSize().x / 2, window->getSize().y / 2);
-	player.setVelocity(sf::Vector2f(400.0f, 100.0f));
+	player.setPosition(window->getSize().x / 2, 533);
+	player.setVelocity(sf::Vector2f(400.0f, 400.0f));
 
 	goombaTex.loadFromFile("gfx/Goomba.png");
 	goombas[0].sendWindowInfos(window);
